@@ -43,7 +43,9 @@ app_license = "mit"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {
+    "Opportunity" : "public/js/doctype/opportunity.js"
+}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -140,7 +142,10 @@ app_license = "mit"
 doc_events = {
 	"Quotation": {
 		"validate": "sre.events.validate.validate_quotation",
-	}
+	},
+    "Opportunity": {
+        "validate": "sre.events.validate.validate_opportunity",
+	},
 }
 
 # Scheduled Tasks
