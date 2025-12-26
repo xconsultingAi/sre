@@ -1,0 +1,71 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-12-24 12:04:23.220593",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "wapda_saving",
+  "gas_saving",
+  "cost_saving_mix",
+  "column_break_ospw",
+  "wapda_saving_unit",
+  "gas_saving_unit",
+  "cost_saving_mix_unit"
+ ],
+ "fields": [
+  {
+   "fieldname": "wapda_saving",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "WAPDA Saved in each Quarter"
+  },
+  {
+   "fieldname": "gas_saving",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Gas Saved in each Quarter"
+  },
+  {
+   "fieldname": "cost_saving_mix",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Cost Saving (on Current Fuel Mix)"
+  },
+  {
+   "fieldname": "column_break_ospw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "wapda_saving_unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  },
+  {
+   "fieldname": "gas_saving_unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  },
+  {
+   "fieldname": "cost_saving_mix_unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-12-24 12:10:36.325349",
+ "modified_by": "Administrator",
+ "module": "Sre",
+ "name": "Quarter Cost Saving",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

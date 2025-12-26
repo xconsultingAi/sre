@@ -1,0 +1,459 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:template_name",
+ "creation": "2025-12-23 17:02:14.777306",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "template_name",
+  "customer_information_section",
+  "corporate_tax_rate",
+  "payment_terms_section",
+  "advance_on_po",
+  "column_break_ujor",
+  "on_project_completion",
+  "available_space_section",
+  "length_south_facing",
+  "width",
+  "column_break_titj",
+  "length_south_facing_unit",
+  "width_unit",
+  "system_information_section",
+  "system_size",
+  "single_module_size",
+  "no_of_solar_modules",
+  "working_days",
+  "column_break_gmeh",
+  "system_size_unit",
+  "single_module_size_unit",
+  "no_of_solar_modules_unit",
+  "working_days_unit",
+  "current_fuel_information_section",
+  "primary_source",
+  "price_of_wapda",
+  "annual_price_increase",
+  "secondary_source",
+  "price_of_gas",
+  "annual_price_increase_gas",
+  "fuel_mix_wapda",
+  "fuel_mix_gas",
+  "column_break_kddj",
+  "primary_source_unit",
+  "price_of_wapda_unit",
+  "annual_price_increase_unit",
+  "secondary_source_unit",
+  "price_of_gas_unit",
+  "annual_price_increase_gas_unit",
+  "annual_energy_gain_from_solar_pv_system_section",
+  "system_size_annual",
+  "average_daily_energy_gain",
+  "no_of_operating_days",
+  "unit_produced_annually",
+  "energy_gain_from_system",
+  "column_break_fzzs",
+  "system_size_annual_unit",
+  "average_daily_energy_gain_unit",
+  "unit",
+  "unit_produced_annually_unit",
+  "energy_gain_from_system_unit",
+  "annual_cost_saving_from_solar_pv_system_section",
+  "no_of_units_saved_wapda",
+  "no_of_units_saved_gas",
+  "annual_cost_saving",
+  "column_break_lmjq",
+  "no_of_units_saved_wapda_unit",
+  "no_of_units_saved_gas_unit",
+  "annual_cost_saving_unit",
+  "quarterly_energy_gain_from_solar_pv_system_section",
+  "quarterly_energy_gain",
+  "quarter_wise_cost_saving_from_solar_pv_system_section",
+  "quarterly_cost_saving",
+  "items_section",
+  "items"
+ ],
+ "fields": [
+  {
+   "fieldname": "template_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Template Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "customer_information_section",
+   "fieldtype": "Section Break",
+   "label": "Customer Information"
+  },
+  {
+   "default": "0",
+   "fieldname": "corporate_tax_rate",
+   "fieldtype": "Percent",
+   "label": "Corporate Tax Rate (%)"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "payment_terms_section",
+   "fieldtype": "Section Break",
+   "label": "Payment Terms"
+  },
+  {
+   "default": "0",
+   "fieldname": "advance_on_po",
+   "fieldtype": "Percent",
+   "label": "Advance on PO (%)"
+  },
+  {
+   "fieldname": "column_break_ujor",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "on_project_completion",
+   "fieldtype": "Percent",
+   "label": "On Project Completion (%)"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "available_space_section",
+   "fieldtype": "Section Break",
+   "label": "Available Space"
+  },
+  {
+   "fieldname": "length_south_facing",
+   "fieldtype": "Data",
+   "label": "Length - South Facing"
+  },
+  {
+   "fieldname": "column_break_titj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "width",
+   "fieldtype": "Data",
+   "label": "Width"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "system_information_section",
+   "fieldtype": "Section Break",
+   "label": "System Information"
+  },
+  {
+   "default": "0",
+   "fieldname": "system_size",
+   "fieldtype": "Float",
+   "label": "System Size"
+  },
+  {
+   "default": "0",
+   "fieldname": "single_module_size",
+   "fieldtype": "Float",
+   "label": "Single Module Size"
+  },
+  {
+   "default": "0",
+   "fieldname": "no_of_solar_modules",
+   "fieldtype": "Float",
+   "label": "No of Solar Modules (545 Watt Each)"
+  },
+  {
+   "default": "0",
+   "fieldname": "working_days",
+   "fieldtype": "Int",
+   "label": "Working Days"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "current_fuel_information_section",
+   "fieldtype": "Section Break",
+   "label": "Current Fuel Information"
+  },
+  {
+   "fieldname": "primary_source",
+   "fieldtype": "Data",
+   "label": "Primary Source"
+  },
+  {
+   "default": "0",
+   "fieldname": "price_of_wapda",
+   "fieldtype": "Float",
+   "label": "Price of WAPDA"
+  },
+  {
+   "default": "0",
+   "fieldname": "annual_price_increase",
+   "fieldtype": "Percent",
+   "label": "Annual Price Increase of WAPDA"
+  },
+  {
+   "fieldname": "column_break_kddj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "secondary_source",
+   "fieldtype": "Data",
+   "label": "Secondary Source"
+  },
+  {
+   "default": "0",
+   "fieldname": "price_of_gas",
+   "fieldtype": "Float",
+   "label": "Price of Gas"
+  },
+  {
+   "default": "0",
+   "fieldname": "annual_price_increase_gas",
+   "fieldtype": "Percent",
+   "label": "Annual Price Increase of Gas"
+  },
+  {
+   "fieldname": "length_south_facing_unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  },
+  {
+   "fieldname": "width_unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  },
+  {
+   "fieldname": "column_break_gmeh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "system_size_unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  },
+  {
+   "fieldname": "single_module_size_unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  },
+  {
+   "fieldname": "no_of_solar_modules_unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  },
+  {
+   "fieldname": "working_days_unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  },
+  {
+   "fieldname": "primary_source_unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  },
+  {
+   "fieldname": "price_of_wapda_unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  },
+  {
+   "fieldname": "annual_price_increase_unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  },
+  {
+   "fieldname": "secondary_source_unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  },
+  {
+   "fieldname": "price_of_gas_unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  },
+  {
+   "fieldname": "annual_price_increase_gas_unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  },
+  {
+   "default": "0",
+   "fieldname": "fuel_mix_wapda",
+   "fieldtype": "Percent",
+   "label": "Fuel Mix WAPDA"
+  },
+  {
+   "default": "0",
+   "fieldname": "fuel_mix_gas",
+   "fieldtype": "Percent",
+   "label": "Fuel Mix Gas"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "annual_energy_gain_from_solar_pv_system_section",
+   "fieldtype": "Section Break",
+   "label": "Annual Energy Gain from Solar PV System"
+  },
+  {
+   "fieldname": "system_size_annual",
+   "fieldtype": "Data",
+   "label": "System Size"
+  },
+  {
+   "fieldname": "average_daily_energy_gain",
+   "fieldtype": "Data",
+   "label": "Average Daily Energy Gain"
+  },
+  {
+   "fieldname": "column_break_fzzs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "system_size_annual_unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  },
+  {
+   "default": "0",
+   "fieldname": "no_of_operating_days",
+   "fieldtype": "Int",
+   "label": "No. of Operating Days in a Year"
+  },
+  {
+   "default": "0",
+   "fieldname": "unit_produced_annually",
+   "fieldtype": "Float",
+   "label": "Amount of Units Produced Annually"
+  },
+  {
+   "default": "0",
+   "fieldname": "energy_gain_from_system",
+   "fieldtype": "Float",
+   "label": "Annual Energy Gain from the System"
+  },
+  {
+   "fieldname": "average_daily_energy_gain_unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  },
+  {
+   "fieldname": "unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  },
+  {
+   "fieldname": "unit_produced_annually_unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  },
+  {
+   "fieldname": "energy_gain_from_system_unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "annual_cost_saving_from_solar_pv_system_section",
+   "fieldtype": "Section Break",
+   "label": "Annual Cost Saving from Solar PV System"
+  },
+  {
+   "default": "0",
+   "fieldname": "no_of_units_saved_wapda",
+   "fieldtype": "Int",
+   "label": "No. of Units Saved from WAPDA Annually"
+  },
+  {
+   "default": "0",
+   "fieldname": "no_of_units_saved_gas",
+   "fieldtype": "Int",
+   "label": "No. of Units Saved from Gas Annually"
+  },
+  {
+   "default": "0",
+   "fieldname": "annual_cost_saving",
+   "fieldtype": "Float",
+   "label": "Annual Cost Saving (on Current Fuel Mix)"
+  },
+  {
+   "fieldname": "column_break_lmjq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "no_of_units_saved_wapda_unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  },
+  {
+   "fieldname": "no_of_units_saved_gas_unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  },
+  {
+   "fieldname": "annual_cost_saving_unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "quarterly_energy_gain_from_solar_pv_system_section",
+   "fieldtype": "Section Break",
+   "label": "Quarterly Energy Gain from Solar PV System"
+  },
+  {
+   "fieldname": "quarterly_energy_gain",
+   "fieldtype": "Table",
+   "label": "Quarterly Energy Gain",
+   "options": "Quarter Energy Gain"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "quarter_wise_cost_saving_from_solar_pv_system_section",
+   "fieldtype": "Section Break",
+   "label": "Quarter Wise Cost Saving from Solar PV System"
+  },
+  {
+   "fieldname": "quarterly_cost_saving",
+   "fieldtype": "Table",
+   "label": "Quarterly Cost Saving",
+   "options": "Quarter Cost Saving"
+  },
+  {
+   "fieldname": "items_section",
+   "fieldtype": "Section Break",
+   "label": "Items"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Project Proposal Item"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-12-24 18:10:34.317512",
+ "modified_by": "Administrator",
+ "module": "Sre",
+ "name": "Project Proposal Template",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
