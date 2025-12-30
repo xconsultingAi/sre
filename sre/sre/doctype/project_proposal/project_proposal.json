@@ -430,8 +430,7 @@
    "fieldname": "template",
    "fieldtype": "Link",
    "label": "Template",
-   "options": "Project Proposal Template",
-   "unique": 1
+   "options": "Project Proposal Template"
   },
   {
    "fieldname": "column_break_luio",
@@ -496,8 +495,8 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-24 18:14:42.635987",
- "modified_by": "Administrator",
+ "modified": "2025-12-30 19:01:42.509094",
+ "modified_by": "asif@sre.com",
  "module": "Sre",
  "name": "Project Proposal",
  "naming_rule": "By \"Naming Series\" field",
