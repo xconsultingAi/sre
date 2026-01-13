@@ -21,17 +21,12 @@ frappe.ui.form.on('Opportunity Item', {
                 callback: function (r) {
                     if (r.message) {
                         frappe.model.set_value(cdt, cdn, 'rate', r.message.valuation_rate);
-                        frappe.model.set_value(cdt, cdn, 'base_rate', r.message.valuation_rate);
-                        frappe.model.set_value(cdt, cdn, 'base_price', r.message.valuation_rate);
+                        // frappe.model.set_value(cdt, cdn, 'base_rate', r.message.valuation_rate);
+                        // frappe.model.set_value(cdt, cdn, 'base_price', r.message.valuation_rate);
                     }
                 }
             });
         }
     },
 
-    items_add: function (frm, cdt, cdn) {
-        if (frm.doc.retention_profit_rate) {
-            frappe.model.set_value(cdt, cdn, 'retention_profit_rate', frm.doc.retention_profit_rate);
-        }
-    }
 });

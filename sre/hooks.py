@@ -145,9 +145,6 @@ doc_events = {
 	"Quotation": {
 		"validate": "sre.events.validate.validate_quotation",
 	},
-    "Opportunity": {
-        "validate": "sre.events.validate.validate_opportunity",
-	},
 }
 
 # Scheduled Tasks
