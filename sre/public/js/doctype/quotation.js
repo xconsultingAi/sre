@@ -1,4 +1,12 @@
 frappe.ui.form.on('Quotation', {
+    refresh: function (frm) {
+        frm.add_custom_button(__('Project Propsal'), function () {
+            frappe.new_doc('Project Proposal', {
+                ...frm.doc
+            });
+        }, __('Create'));
+    },
+
     retention_profit_rate: function (frm) {
         frm.doc.items.forEach(item => {
             item.retention_profit_rate = frm.doc.retention_profit_rate;
