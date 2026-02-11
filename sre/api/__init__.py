@@ -40,3 +40,9 @@ def map_from_template(template_name, target_doc=None):
     )
 
     return doc
+
+
+@frappe.whitelist()
+def get_company_total_stock(item_code, company):
+    from erpnext.stock.get_item_details import get_company_total_stock as get_total_stock
+    return get_total_stock(item_code, company)

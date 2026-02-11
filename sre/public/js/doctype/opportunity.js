@@ -21,8 +21,19 @@ frappe.ui.form.on('Opportunity Item', {
                 callback: function (r) {
                     if (r.message) {
                         frappe.model.set_value(cdt, cdn, 'rate', r.message.valuation_rate);
-                        // frappe.model.set_value(cdt, cdn, 'base_rate', r.message.valuation_rate);
-                        // frappe.model.set_value(cdt, cdn, 'base_price', r.message.valuation_rate);
+                    }
+                }
+            });
+
+            frappe.call({
+                method: 'sre.api.get_company_total_stock',
+                args: {
+                    item_code: row.item_code,
+                    company: frm.doc.company
+                },
+                callback: function (r) {
+                    if (r.message !== undefined && r.message !== null) {
+                        frappe.model.set_value(cdt, cdn, 'company_stock', r.message);
                     }
                 }
             });
