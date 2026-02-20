@@ -8,18 +8,17 @@ app_license = "mit"
 # Apps
 # ------------------
 
-# required_apps = []
+required_apps = ["frappe", "erpnext"]
 
 # Each item in the list will be shown as an app in the apps page
-# add_to_apps_screen = [
-# 	{
-# 		"name": "sre",
-# 		"logo": "/assets/sre/logo.png",
-# 		"title": "Sre",
-# 		"route": "/sre",
-# 		"has_permission": "sre.api.permission.has_app_permission"
-# 	}
-# ]
+add_to_apps_screen = [
+	{
+		"name": "sre",
+		"logo": "/assets/sre/images/logo.png",
+		"title": "SRE (Siddiq Renewable Energy)",
+		"route": "/sre",
+	}
+]
 
 # Includes in <head>
 # ------------------
@@ -238,7 +237,7 @@ doc_events = {
 # ]
 
 # Automatically update python controller files with type annotations for this app.
-# export_python_type_annotations = True
+export_python_type_annotations = True
 
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
