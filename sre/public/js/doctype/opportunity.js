@@ -18,9 +18,11 @@ frappe.ui.form.on('Opportunity Item', {
                     item_code: row.item_code,
                     company: frm.doc.company
                 },
-                callback: function (r) {
-                    if (r.message) {
-                        frappe.model.set_value(cdt, cdn, 'rate', r.message.valuation_rate);
+                callback: function(r) {
+                    if (r.message && r.message.valuation_rate) {
+                        let rate = flt(r.message.valuation_rate);
+                        frappe.model.set_value(cdt, cdn, 'rate', rate);
+                        frappe.model.set_value(cdt, cdn, 'base_price', rate);
                     }
                 }
             });
