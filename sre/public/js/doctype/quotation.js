@@ -37,42 +37,24 @@ frappe.ui.form.on('Quotation', {
 frappe.ui.form.on('Quotation Item', {
     item_code: function(frm, cdt, cdn) {
         let row = locals[cdt][cdn];
+
         if (row.item_code) {
             frappe.call({
-                method: 'erpnext.stock.get_item_details.get_valuation_rate',
+                method: 'frappe.client.get_value',
                 args: {
-                    item_code: row.item_code,
-                    company: frm.doc.company,
+                    doctype: 'Item',
+                    filters: { name: row.item_code },
+                    fieldname: 'valuation_rate'
                 },
                 callback: function(r) {
                     let rate = 0;
-                    
+
                     if (r.message && r.message.valuation_rate) {
                         rate = flt(r.message.valuation_rate);
                     }
-                    
-                    if (!rate || rate === 0) {
-                        frappe.call({
-                            method: 'frappe.client.get_value',
-                            args: {
-                                doctype: 'Item',
-                                fieldname: 'valuation_rate',
-                                filters: { name: row.item_code }
-                            },
-                            callback: function(item_r) {
-                                if (item_r.message && item_r.message.valuation_rate) {
-                                    rate = flt(item_r.message.valuation_rate);
-                                }
-                                
-                                frappe.model.set_value(cdt, cdn, 'rate', rate);
-                                frappe.model.set_value(cdt, cdn, 'base_rate', rate);
-                            }
-                        });
-                    } else {
 
-                        frappe.model.set_value(cdt, cdn, 'rate', rate);
-                        frappe.model.set_value(cdt, cdn, 'base_rate', rate);
-                    }
+                    frappe.model.set_value(cdt, cdn, 'rate', rate);
+                    frappe.model.set_value(cdt, cdn, 'base_rate', rate);
                 }
             });
         }
