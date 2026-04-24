@@ -1,0 +1,206 @@
+<style>
+    .company-title {
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .report-title {
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .date-group {
+        font-weight: bold;
+        margin-top: 15px;
+        border-bottom: 1px solid #000;
+        padding-bottom: 4px;
+    }
+
+    .supplier-group {
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 10px;
+    }
+
+    th, td {
+        border: 1px solid #000;
+        padding: 4px;
+        font-size: 10px;
+    }
+
+    th {
+        background: #eee;
+    }
+
+    .text-right { text-align: right; }
+    .text-center { text-align: center; }
+    .total-row {
+        font-weight: bold;
+        background: #f5f5f5;
+    }
+</style>
+
+<div class="company-title">SIDDIQ RENEWABLE ENERGY</div>
+<div class="report-title">Purchase Order Summary Date Wise</div>
+
+<p style="text-align:center;">
+From: {%= filters.from_date || "" %}
+&nbsp;&nbsp;
+To: {%= filters.to_date || "" %}
+</p>
+
+{% if (data && data.length) { %}
+
+{%
+    var grand_qty = 0;
+    var grand_amount = 0;
+
+    var grouped = {};
+
+    for (var i = 0; i < data.length; i++) {
+        var date = data[i].purchase_order_date || "No Date";
+
+        if (!grouped[date]) {
+            grouped[date] = {};
+        }
+
+        var supplier = data[i].supplier || "No Supplier";
+
+        if (!grouped[date][supplier]) {
+            grouped[date][supplier] = [];
+        }
+
+        grouped[date][supplier].push(data[i]);
+    }
+
+    var date_keys = Object.keys(grouped);
+%}
+
+{% for (var d = 0; d < date_keys.length; d++) { %}
+    {% var date = date_keys[d]; %}
+
+    <div class="date-group">
+        Date : {%= date %}
+    </div>
+
+    {%
+        var date_total_qty = 0;
+        var date_total_amount = 0;
+
+        var supplier_keys = Object.keys(grouped[date]);
+    %}
+
+    {% for (var s = 0; s < supplier_keys.length; s++) { %}
+        {% var supplier = supplier_keys[s]; %}
+        {% var rows = grouped[date][supplier]; %}
+
+        <div class="supplier-group">
+            {%= supplier %}
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>P.O #</th>
+                    <th>Item Code</th>
+                    <th>Description</th>
+                    <th>Unit</th>
+                    <th>Qty On Hand</th>
+                    <th>Ordered Qty</th>
+                    <th>Last Pur Date</th>
+                    <th>Rate</th>
+                    <th>Amount</th>
+                    <th>Consumption</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {%
+                    var supplier_qty = 0;
+                    var supplier_amount = 0;
+
+                    for (var i = 0; i < rows.length; i++) {
+                        var row = rows[i];
+
+                        supplier_qty += row.ordered_qty || 0;
+                        supplier_amount += row.amount || 0;
+                %}
+                <tr>
+                    <td>{%= row.po_number %}</td>
+                    <td>{%= row.item_code %}</td>
+                    <td>{%= row.description %}</td>
+                    <td class="text-center">{%= row.uom %}</td>
+                    <td class="text-right">{%= (row.qty_on_hand || 0).toFixed(2) %}</td>
+                    <td class="text-right">{%= (row.ordered_qty || 0).toFixed(2) %}</td>
+                    <td class="text-center">{%= row.last_purchase_date %}</td>
+                    <td class="text-right">{%= (row.rate || 0).toFixed(2) %}</td>
+                    <td class="text-right">{%= (row.amount || 0).toFixed(2) %}</td>
+                    <td class="text-right">{%= (row.consumption_1_month || 0).toFixed(2) %}</td>
+                </tr>
+                {% } %}
+
+                <tr class="total-row">
+                    <td colspan="5" class="text-right">
+                        Total for {%= supplier %}
+                    </td>
+                    <td class="text-right">{%= supplier_qty.toFixed(2) %}</td>
+                    <td></td>
+                    <td></td>
+                    <td class="text-right">{%= supplier_amount.toFixed(2) %}</td>
+                    <td></td>
+                </tr>
+
+                {%
+                    date_total_qty += supplier_qty;
+                    date_total_amount += supplier_amount;
+                %}
+
+            </tbody>
+        </table>
+
+    {% } %}
+
+    <table>
+        <tr class="total-row">
+            <td colspan="5" class="text-right">
+                Total for {%= date %}
+            </td>
+            <td class="text-right">{%= date_total_qty.toFixed(2) %}</td>
+            <td></td>
+            <td></td>
+            <td class="text-right">{%= date_total_amount.toFixed(2) %}</td>
+            <td></td>
+        </tr>
+    </table>
+
+    {%
+        grand_qty += date_total_qty;
+        grand_amount += date_total_amount;
+    %}
+
+{% } %}
+
+<table>
+    <tr class="total-row">
+        <td colspan="5" class="text-right">
+            Grand Total
+        </td>
+        <td class="text-right">{%= grand_qty.toFixed(2) %}</td>
+        <td></td>
+        <td></td>
+        <td class="text-right">{%= grand_amount.toFixed(2) %}</td>
+        <td></td>
+    </tr>
+</table>
+
+{% } else { %}
+    <p style="text-align:center;">No Data Found</p>
+{% } %}
