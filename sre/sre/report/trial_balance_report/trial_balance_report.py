@@ -345,6 +345,7 @@ def calculate_values(accounts, gl_entries_by_account, opening_balances, show_net
 def calculate_total_row(data, company_currency, show_group_accounts=True):
 	total_row = {
 		"account": "'" + _("Total") + "'",
+		"account_number": "",
 		"account_name": "'" + _("Total") + "'",
 		"warn_if_negative": True,
 		"opening_debit": 0.0,
@@ -402,15 +403,14 @@ def prepare_data(accounts, filters, parent_children_map, company_currency):
 		
 		row = {
 			"account": d.name,
+			"account_number": d.account_number or "",
+			"account_name": d.account_name or "",
 			"parent_account": d.parent_account,
 			"indent": adjusted_indent,
 			"from_date": filters.from_date,
 			"to_date": filters.to_date,
 			"currency": company_currency,
 			"is_group_account": d.is_group,
-			"account_name": (
-				f"{d.account_number} - {d.account_name}" if d.account_number else d.account_name
-			),
 		}
 
 		for key in value_fields:
@@ -476,11 +476,23 @@ def calculate_adjusted_indent(current_indent, selected_levels):
 def get_columns():
 	return [
 		{
+			"fieldname": "account_number",
+			"label": _("Account No"),
+			"fieldtype": "Data",
+			"width": 120,
+		},
+		{
+			"fieldname": "account_name",
+			"label": _("Account Name"),
+			"fieldtype": "Data",
+			"width": 300,
+		},
+		{
 			"fieldname": "account",
-			"label": _("Account"),
+			"label": _("Account Link"),
 			"fieldtype": "Link",
 			"options": "Account",
-			"width": 300,
+			"hidden": 1,
 		},
 		{
 			"fieldname": "currency",
