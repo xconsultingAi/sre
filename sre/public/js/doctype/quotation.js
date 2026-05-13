@@ -34,38 +34,7 @@ frappe.ui.form.on('Quotation', {
         });
     }
 });
-frappe.ui.form.on('Quotation Item', {
-    item_code: function(frm, cdt, cdn) {
-        let row = locals[cdt][cdn];
 
-        if (row.item_code) {
-            frappe.call({
-                method: 'frappe.client.get_value',
-                args: {
-                    doctype: 'Item',
-                    filters: { name: row.item_code },
-                    fieldname: 'valuation_rate'
-                },
-                callback: function(r) {
-                    let rate = 0;
-
-                    if (r.message && r.message.valuation_rate) {
-                        rate = flt(r.message.valuation_rate);
-                    }
-
-                    frappe.model.set_value(cdt, cdn, 'rate', rate);
-                    frappe.model.set_value(cdt, cdn, 'base_rate', rate);
-                }
-            });
-        }
-    },
-
-    items_add: function(frm, cdt, cdn) {
-        if (frm.doc.retention_profit_rate) {
-            frappe.model.set_value(cdt, cdn, 'retention_profit_rate', frm.doc.retention_profit_rate);
-        }
-    }
-});
 frappe.ui.form.on('Project Proposal', {
     refresh: function(frm) {
         calculate_grand_total(frm);  
