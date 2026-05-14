@@ -29,9 +29,32 @@ frappe.ui.form.on('Quotation', {
     },
 
     retention_profit_rate: function(frm) {
-        (frm.doc.items || []).forEach(item => {
-            frappe.model.set_value(item.doctype, item.name, 'retention_profit_rate', frm.doc.retention_profit_rate);
+        const items = frm.doc.items || [];
+        const firstRate = items.length ? flt(items[0].rate) : 0;
+
+        items.forEach(item => {
+
+            if (item.retention_profit_rate && item.retention_profit_rate !== 0) {
+                return;
+            }
+
+            if (!frm.doc.retention_profit_rate || frm.doc.retention_profit_rate === 0) {
+                const rateToUse = firstRate;
+                frappe.model.set_value(item.doctype, item.name, 'rate', rateToUse);
+                frappe.model.set_value(item.doctype, item.name, 'amount', flt(item.qty) * rateToUse);
+                frappe.model.set_value(item.doctype, item.name, 'net_amount', flt(item.qty) * rateToUse);
+                frappe.model.set_value(item.doctype, item.name, 'retention_profit_rate', 0);
+            } else {
+                const retentionRate = flt(frm.doc.retention_profit_rate) || 0;
+                const originalRate = flt(item.rate) || 0;
+                const adjustedRate = originalRate * (1 + retentionRate / 100);
+                frappe.model.set_value(item.doctype, item.name, 'retention_profit_rate', frm.doc.retention_profit_rate);
+                frappe.model.set_value(item.doctype, item.name, 'rate', adjustedRate);
+                frappe.model.set_value(item.doctype, item.name, 'amount', flt(item.qty) * adjustedRate);
+                frappe.model.set_value(item.doctype, item.name, 'net_amount', flt(item.qty) * adjustedRate);
+            }
         });
+        calculate_grand_total(frm);
     }
 });
 
@@ -57,6 +80,21 @@ frappe.ui.form.on('Project Proposal Item', {
         calculate_grand_total(frm);
     },
     amount: function(frm, cdt, cdn) {
+        calculate_grand_total(frm);
+    }
+});
+
+frappe.ui.form.on('Quotation Item', {
+    retention_profit_rate: function(frm, cdt, cdn) {
+        let row = locals[cdt][cdn];
+        let retentionRate = flt(row.retention_profit_rate) || 0;
+        let originalRate = flt(row.rate) || 0;
+        let adjustedRate = originalRate * (1 + retentionRate / 100);
+        frappe.model.set_value(cdt, cdn, 'rate', adjustedRate);
+        frappe.model.set_value(cdt, cdn, 'base_rate', adjustedRate);
+        frappe.model.set_value(cdt, cdn, 'base_net_rate', adjustedRate);
+        frappe.model.set_value(cdt, cdn, 'amount', flt(row.qty) * adjustedRate);
+        frappe.model.set_value(cdt, cdn, 'base_price', adjustedRate);
         calculate_grand_total(frm);
     }
 });

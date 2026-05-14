@@ -141,11 +141,11 @@ doctype_list_js = {"Opportunity" : "public/js/doctype_list/opportunity_list.js"}
 # ---------------
 # Hook on document methods and events
 
-doc_events = {
-	"Quotation": {
-		"validate": "sre.events.validate.validate_quotation",
-	},
-}
+# doc_events = {
+# 	"Quotation": {
+# 		"validate": "sre.events.validate.validate_quotation",
+# 	},
+# }
 
 # Scheduled Tasks
 # ---------------
